@@ -1,6 +1,7 @@
 const box = document.getElementById('grid-box');
 const gameScore = document.getElementById('gameScore');
 const result = document.getElementById('resultDisplay');
+const btn = document.getElementById('resetButton');
 let gameState = true;
 var random = [];
 let myBoxes = "";
@@ -55,7 +56,7 @@ box.addEventListener('click', e=>{
             //enable button
             result.innerText = 'Game Over';
             gameState = false;
-            enableButton();
+            btn.removeAttribute('disabled')
 
         }else{
             //Score ++ bht sahi
@@ -71,18 +72,13 @@ box.addEventListener('click', e=>{
                 //enable button
                 result.innerText = 'Win'
                 gameState = false;
-                enableButton();
+                btn.removeAttribute('disabled')
             }
         }
     }
-
-
 })
 
-function enableButton() {
-    const btn = document.getElementById('resetButton');
-    btn.removeAttribute('disabled')
-}
+
 
 function resetGame(){
     generateRandomArray();
@@ -90,6 +86,7 @@ function resetGame(){
     result.innerHTML = "";
     gameState = true;
     gameScore.innerText = "0";
+    btn.setAttribute('disabled', 'disabled');
 }
 
 let a = []
